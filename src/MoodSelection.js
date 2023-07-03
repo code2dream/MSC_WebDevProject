@@ -4,7 +4,7 @@ import { useState } from 'react';
 const MoodSelection = () => {
   const [selectedMood, setSelectedMood] = useState('');
 
-  const moods = ['Happy', 'Sad', 'Energetic', 'Relaxed'];
+  const moods = ['Dance','Happy', 'Sad', 'Energetic', 'Relaxed', 'Work-Out'];
 
   const handleMoodSelection = (mood) => {
     setSelectedMood(mood);
