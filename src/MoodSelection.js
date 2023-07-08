@@ -1,13 +1,14 @@
 import React from "react";
 import { useState } from 'react';
 
-const MoodSelection = () => {
+const MoodSelection = ({onMoodSelect}) => {
   const [selectedMood, setSelectedMood] = useState('');
 
   const moods = ['Dance','Happy', 'Sad', 'Energetic', 'Relaxed', 'Work-Out'];
 
   const handleMoodSelection = (mood) => {
     setSelectedMood(mood);
+    onMoodSelect(mood);
   };
 
   return (
@@ -24,7 +25,6 @@ const MoodSelection = () => {
           </li>
         ))}
       </ul>
-      {selectedMood && <p>Your selected mood: {selectedMood}</p>}
     </div>
   );
 };
