@@ -1,29 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
-const RecommendedTracks = ({Mood,token}) => {
-    const [tracks, setTracks] = useState([]);
-
-    useEffect(() => {
-        const fetchRecommendedTracks = async () => {
-            const response = await fetch(
-                `https://api.spotify.com/v1/recommendations?seed_genres=${Mood}&limit=10`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}` 
-            }
-          }
-        )
-        if (response.ok){
-            const data = await response.json();
-            setTracks(data.tracks);
-        }
-        };
-
-        if(Mood){
-            fetchRecommendedTracks();
-        }
-    }, [Mood])
+const RecommendedTracks = ({tracks}) => {
 
     return(
         <div>
