@@ -32,7 +32,7 @@ body{
   background-color: rgb(170, 124, 212);
 
 }
-.App-header{
+.App-header1{
  
   background-color: rgb(170, 124, 212);
   color: white;
@@ -41,9 +41,13 @@ body{
   
 }
 
+.App-content{
+  align-content: left;
+}
+
 .MoodSection{
   display: flex;
-  margin-top: 0;
+  margin-top: 50px;
   background-color: rgb(186, 163, 208);
   font-size: small;
   color: white;
@@ -55,28 +59,37 @@ body{
   font-size: large;
   align-content: center;
   text-align: center;
-  margin-left: 30px;
+  margin-left: 100px;
   display: flex;
 }
 
 .TrackList{
-  background-color: rgb(170, 124, 212);
+  margin-top: 50px;
+ 
 }
 
-.TrackInfo{
+.TrackName{
   background-color: rgb(123, 95, 152);
 }
 
-
-.RecommendedTracks{
-  display: flex;
+.TrackInfo{
+  background-color: rgb(190, 166, 214);
+  margin-bottom: 50px;
 }
 
 .heading1{
   padding: 50px;
+  background-color: rgb(118, 76, 157);
 }
 
 .heading2{
   margin-left: 210px;
 }
 
+.PlayButton{
+  margin: 10px;
+}
+
+.SpotifyButton{
+  margin: 10px;
+}

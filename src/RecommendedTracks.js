@@ -30,9 +30,9 @@ function RecommendedTracks({name, id, url, preview_url, duration_ms, artist}){
         </div>
         <div className="TrackInfo card-body">
         <p><h5>Artist: {artist}</h5><br/>Duration: {duration_ms} ms<br/></p><p>
-        <button className="btn btn-info"onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button><br/>
+        <button className="PlayButton btn btn-info"onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button><br/>
         
-        <a href={url} target="_blank" rel="noopener noreferrer">
+        <a className="SpotifyButton btn btn-primary" href={url} target="_blank" rel="noopener noreferrer">
         Open in Spotify
         </a><br/>
         </p>

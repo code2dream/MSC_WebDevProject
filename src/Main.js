@@ -52,11 +52,11 @@ const Main = ({ token }) => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header1">
         <h1 className='heading1'>Moody: A Mood Based Playlist Generator</h1>
       </header>
 
-      <main>
+      <main className="App-content">
         <div className="MoodSection col-9">
           <h3 className='heading2'>Select your mood:</h3>
           <select
