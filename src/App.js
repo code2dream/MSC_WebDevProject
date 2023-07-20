@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import {useEffect, useState} from "react";
 import Login from "./Login";
@@ -5,7 +6,7 @@ import Main from "./Main";
 
 function App() {
 
-  const [token, setToken] = useState();
+  const [token, setToken] = useState("");
   
   useEffect(() => {
 
@@ -21,7 +22,7 @@ function App() {
 
   }, []);
 
-    return <>{token ? <Main token={token} /> : <Login/>}</>;
+    return <React.Fragment>{token ? <Main token={token} /> : <Login/>}</React.Fragment>;
 
 }
 

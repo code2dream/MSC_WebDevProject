@@ -8,15 +8,15 @@ global.access_token = '';
 
 dotenv.config()
 
-const spotify_client_id = process.env.SPOTIFY_CLIENT_ID;
-const spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const spotify_client_id = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+const spotify_client_secret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
 const spotify_redirect_uri = 'http://localhost:3000/auth/callback';
 
 const app = express();
 
 app.get('/auth/login', (req, res) => {
 
-    const scope = "streaming playlist-modify-private playlist-modify-public user-read-email user-read-private";
+    const scope = "streaming playlist-modify-private playlist-modify-public user-read-email user-read-private user-top-read playlist-read-private";
 
     const auth_query_parameters = new URLSearchParams({
         response_type: "code",
