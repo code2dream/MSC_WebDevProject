@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -13,17 +14,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -35,5 +25,58 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body{
+
+  background-color: rgb(170, 124, 212);
+
+}
+.App-header{
+ 
+  background-color: rgb(170, 124, 212);
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: oblique;
+  
+}
+
+.MoodSection{
+  display: flex;
+  margin-top: 0;
+  background-color: rgb(186, 163, 208);
+  font-size: small;
+  color: white;
+  padding: 20px;
+  width: 100%;
+}
+
+.MoodList{
+  font-size: large;
+  align-content: center;
+  text-align: center;
+  margin-left: 30px;
+  display: flex;
+}
+
+.TrackList{
+  background-color: rgb(170, 124, 212);
+}
+
+.TrackInfo{
+  background-color: rgb(123, 95, 152);
+}
+
+
+.RecommendedTracks{
+  display: flex;
+}
+
+.heading1{
+  padding: 50px;
+}
+
+.heading2{
+  margin-left: 210px;
 }
 

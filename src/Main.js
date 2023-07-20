@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import RecommendedTracks from './RecommendedTracks';
-import Player from './Player';
 
 const Main = ({ token }) => {
   const [tracks, setTracks] = useState([]);
   const [selectedMood, setSelectedMood] = useState('');
-  const [selectedTrack,setSelectedTrack] = useState();
   const moods = ['Dance', 'Happy', 'Sad', 'Energetic', 'Relaxed', 'Work-Out'];
 
   useEffect(() => {
@@ -22,7 +20,7 @@ const Main = ({ token }) => {
           const topArtistIds = topArtistsData.items.map((artist) => artist.id).slice(0, 5);
 
           const recommendedTracksResponse = await fetch(
-            `https://api.spotify.com/v1/recommendations?seed_artists=${topArtistIds.join(',')}&limit=10`,
+            `https://api.spotify.com/v1/recommendations?seed_artists=${topArtistIds.join(',')}&limit=20`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -55,27 +53,34 @@ const Main = ({ token }) => {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="MoodSection">
-          <h2>Select your mood:</h2>
-          <ul>
+        <h1 className='heading1'>Moody: A Mood Based Playlist Generator</h1>
+      </header>
+
+      <main>
+        <div className="MoodSection col-9">
+          <h3 className='heading2'>Select your mood:</h3>
+          <select
+            className="MoodList"
+            value={selectedMood}
+            onChange={(e) => setSelectedMood(e.target.value)}
+          >
             {moods.map((mood) => (
-              <li
-                className="MoodList"
+              <option
                 key={mood}
                 onClick={() => setSelectedMood(mood)}
-                style={{ fontWeight: selectedMood === mood ? 'bold' : 'normal' }}
-              >
+                style={{ fontWeight: selectedMood === mood ? 'bold' : 'normal' }} 
+                value={mood}>
                 {mood}
-              </li>
+              </option>
             ))}
-          </ul>
+          </select>
         </div>
         <div className="TrackList">
-          {
+          {tracks.length > 0 ? (
             tracks.map((item) => (
-              <div onClick={() => setSelectedTrack(item)}>
               <RecommendedTracks
                 key={item.id}
+                img={item.imgs}
                 artist={item.artists[0].name}
                 url={item.external_urls.spotify}
                 id={item.id}
@@ -83,13 +88,12 @@ const Main = ({ token }) => {
                 duration_ms={item.duration_ms}
                 name={item.name}
               />
-              </div>
-            ))}
+            ))
+          ) : (
+            <p>No recommended tracks found.</p>
+          )}
         </div>
-      </header>
-      <div className='row'>
-        <Player token = {token} trackId = {selectedTrack?.uri}/>
-      </div>
+      </main>
     </div>
   );
 };

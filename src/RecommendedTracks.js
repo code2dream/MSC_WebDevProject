@@ -1,15 +1,46 @@
 import React from "react";
+import { useState,useEffect } from "react";
 
 function RecommendedTracks({name, id, url, preview_url, duration_ms, artist}){
+    const [isPlaying, setIsPlaying] = useState(false);
+  const [audio] = useState(new Audio(preview_url));
+
+  useEffect(() => {
+    audio.addEventListener('ended', () => setIsPlaying(false));
+
+    return () => {
+      audio.removeEventListener('ended', () => setIsPlaying(false));
+    };
+  }, [audio]);
+
+  const handlePlayPause = () => {
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
     return(
-        <a key = {id} href={"#"} className="list-group-item list-group-item-action">
-
-            <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{name}</h5>
-            </div>
-            <p className="mb-1">{artist}</p>
-        </a>
+        <body>
+        <div className="card RecommendedTrack" style={{width: "100%"}}>
+        <div className="TrackName card-header">
+        <h3>{name}</h3>
+        </div>
+        <div className="TrackInfo card-body">
+        <p><h5>Artist: {artist}</h5><br/>Duration: {duration_ms} ms<br/></p><p>
+        <button className="btn btn-info"onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button><br/>
+        
+        <a href={url} target="_blank" rel="noopener noreferrer">
+        Open in Spotify
+        </a><br/>
+        </p>
+        
+        </div>    
+        
+    </div>
+    </body>
     );
 
 }
